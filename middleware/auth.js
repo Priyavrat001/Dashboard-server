@@ -6,8 +6,6 @@ dotenv.config({});
 export const isAuthenticated = async(req, res, next)=>{
     const token = req.cookies["user-token"];
 
-    console.log(token)
-
     if(!token) return res.status(400).json({success:false, message:"Token not found"});
 
     const decodeData = jwt.verify(token, process.env.JWT_SECRET);
